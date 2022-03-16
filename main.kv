@@ -1,0 +1,258 @@
+#: import RiseInTransition kivy.uix.screenmanager.RiseInTransition
+#: import ScrollEffect kivy.effects.scroll.ScrollEffect
+
+
+<RootElement>:
+    orientation: 'vertical'
+    MyNavigator:
+        id: navigator
+        Home:
+            name: 'home'
+        Video_player_screen:
+            name: 'video_player'
+        Config:
+            name: 'config'
+        Reports:
+            name: 'reports'
+    MyNavBar:
+        size_hint_y: None
+        Button:
+            text: 'Home'
+            font_size: '25'
+            background_color: (0.5, 1, 0, 0.5)
+            on_release:
+                root.ids.navigator.transition = RiseInTransition(duration=0.2)
+                root.ids.navigator.current = 'home'
+            Image:
+                source: 'images/home.png'
+                y: self.parent.y + self.parent.height - 100
+                x: self.parent.x
+        Button:
+            text: '    Videos'
+            font_size: '25'
+            background_color: (0.5, 1, 0, 0.5)
+            on_release: 
+                root.ids.navigator.transition = RiseInTransition(duration=0.2)
+                root.ids.navigator.current = 'video_player'
+            Image:
+                source: 'images/video_play.png'
+                y: self.parent.y + self.parent.height - 100
+                x: self.parent.x
+        Button:
+            text: '   Settings'
+            font_size: '25'
+            background_color: (0.5, 1, 0, 0.5)
+            on_release: 
+                root.ids.navigator.transition = RiseInTransition(duration=0.2)
+                root.ids.navigator.current = 'config'
+            Image:
+                source: 'images/config.png'
+                y: self.parent.y + self.parent.height - 100
+                x: self.parent.x
+        Button:
+            text: '   Reports'
+            font_size: '25'
+            background_color: (0.5, 1, 0, 0.5)
+            on_release:
+                root.ids.navigator.transition = RiseInTransition(duration=0.2)
+                root.ids.navigator.current = 'reports'
+            Image:
+                source: 'images/report.png'
+                y: self.parent.y + self.parent.height - 100
+                x: self.parent.x
+
+<Home>:
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0.5, 0.5
+            Rectangle:
+                pos:self.pos
+                size:self.size
+    	orientation: 'vertical'
+        Label:
+            text: '   Welcome to \n COVID-19 guide.'
+            font_size: '40sp'
+            bold:  True
+            color: [0,1.0,0,1.0]
+
+
+<Video_player_screen>:
+    canvas.before:
+        Color:
+        	rgba: .94,1,.9, 1
+        Rectangle:
+        	pos: 0,0
+        	size: self.size
+
+    ScrollView:
+        size_hint_y: .95
+        #scroll_type: ['bars']
+        #effect_cls: ScrollEffect #avoid overscrolling
+        pos_hint: {'x':0, 'y': 0}
+    	do_scroll_x: False
+    	do_scroll_y: True
+
+    	GridLayout:
+    		size:(root.width, 4160)
+    		size_hint_x: None
+    		size_hint_y: None
+    		cols: 1
+    		height: self.minimum_height
+    		row_default_height: 300
+    		row_force_default: True
+    		Carousel:
+    			direction: 'right'
+
+    			AsyncImage:
+    				source: 'IntroductionbyWaiYininEnglish.png'
+
+    		AnchorLayout:
+                anchor_x: 'center'
+                Button:
+                    text: 'Introduction by Wai Yin in English'
+                    background_color: (0, 1, 0, .5)
+                    id: f_but
+                    size_hint:0.8,0.5
+                    on_release:
+                        import webbrowser
+                        webbrowser.open('https://youtu.be/1N_6G0A_c1A')
+
+            Carousel:
+    			direction: 'right'
+
+    			AsyncImage:
+    				source: 'IntroductionbyWaiYininCantonese.png'
+
+    		AnchorLayout:
+                anchor_x: 'center'
+                Button:
+                    text: 'Introduction by Wai Yin in Cantonese'
+                    background_color: (0, 1, 0, .5)
+                    id: f_but
+                    size_hint:0.8,0.5
+                    on_release:
+                        import webbrowser
+                        webbrowser.open('https://youtu.be/M1OzEPc9QBg')
+
+    		Carousel:
+    			direction: 'right'
+
+    			AsyncImage:
+    				source: 'DrGuinterviewEnglish.png'
+
+    		AnchorLayout:
+                anchor_x: 'center'
+                Button:
+                    text: 'Interview With Dr. Gu in English'
+                    background_color: (0, 1, 0, .5)
+                    id: f_but
+                    size_hint:0.8,0.5
+                    on_release:
+                        import webbrowser
+                        webbrowser.open('https://youtu.be/REznu7L7LFk')
+
+
+
+            Carousel:
+    			direction: 'right'
+
+    			AsyncImage:
+    				source: 'InterviewWithDr.YaninCantonese.png'
+
+            AnchorLayout:
+                anchor_x: 'center'
+                Button:
+                    text: 'Interview With Dr. Yan in Cantonese'
+                    background_color: (0, 1, 0, .5)
+                    id: f_but
+                    size_hint:0.8,0.5
+                    on_release:
+                        import webbrowser
+                        webbrowser.open('https://youtu.be/B3DbTDwjpKk')
+
+            Carousel:
+    			direction: 'right'
+
+    			AsyncImage:
+    				source: 'VloginManchester1.png'
+
+            AnchorLayout:
+                anchor_x: 'center'
+                Button:
+                    text: 'Vlog in Manchester 1'
+                    background_color: (0, 1, 0, .5)
+                    id: f_but
+                    size_hint:0.8,0.5
+                    on_release:
+                        import webbrowser
+                        webbrowser.open('https://youtu.be/Wohtb3Thr38')
+
+
+            Carousel:
+    			direction: 'right'
+
+    			AsyncImage:
+    				source: 'VloginManchester2.png'
+
+            AnchorLayout:
+                anchor_x: 'center'
+                Button:
+                    text: 'Vlog in Manchester 2'
+                    background_color: (0, 1, 0, .5)
+                    id: f_but
+                    size_hint:0.8,0.5
+                    on_release:
+                        import webbrowser
+                        webbrowser.open('https://youtu.be/6BIz4aBdGJM')
+
+            Carousel:
+    			direction: 'right'
+
+    			AsyncImage:
+    				source: 'Chinesecommunityvideo.png'
+
+            AnchorLayout:
+                anchor_x: 'center'
+                Button:
+                    text: 'Chinese community video'
+                    background_color: (0, 1, 0, .5)
+                    id: f_but
+                    size_hint:0.8,0.5
+                    on_release:
+                        import webbrowser
+                        webbrowser.open('https://www.youtube.com/watch?v=cKnh_MC3W10')
+
+
+
+
+
+<Config>:
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0.5, 0.5
+            Rectangle:
+                pos:self.pos
+                size:self.size
+        orientation: 'vertical'
+        Label:
+            text: 'Config'
+            font_size: '40sp'
+            bold:  True
+            color: [1.0,0,0,1.0]
+
+<Reports>:
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0, 0.5, 0.5
+            Rectangle:
+                pos:self.pos
+                size:self.size
+        orientation: 'vertical'
+        Label:
+            text: 'Reports'
+            font_size: '40sp'
+            bold:  True
+            color: [1.0,0,1.0,1.0]
